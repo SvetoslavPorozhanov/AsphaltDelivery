@@ -1,0 +1,97 @@
+﻿@model AsphaltDelivery.Web.ViewModels.Courses.CourseCreateInputModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create Course</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="DateTime" class="control-label"></label>
+                <input asp-for="DateTime" class="form-control" placeholder="dd.MM.yyyy HH:mm" />
+                <span asp-validation-for="DateTime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DriverId" class="control-label"></label>@*<label for="driver">Driver</label>*@
+                <select id="driver" class="form-control" name="DriverId">
+                    @foreach (var item in Model.Drivers)
+                    {
+                        <option value="@item.Id">@item.FullName</option>
+                    }
+                </select>
+            </div>
+            <div class="form-group">
+                <label asp-for="TruckId" class="control-label"></label>
+                <select id="truck" class="form-control" name="TruckId">
+                    @foreach (var item in Model.Trucks)
+                    {
+                        <option value="@item.Id">@item.RegistrationNumber</option>
+                    }
+                </select>
+            </div>
+            <div class="form-group">
+                <label asp-for="FirmId" class="control-label"></label>
+                <select id="firm" class="form-control" name="FirmId">
+                    @foreach (var item in Model.Firms)
+                    {
+                        <option value="@item.Id">@item.Name</option>
+                    }
+                </select>
+            </div>
+            <div class="form-group">
+                <label asp-for="AsphaltBaseId" class="control-label"></label>
+                <select id="asphaltBase" class="form-control" name="AsphaltBaseId">
+                    @foreach (var item in Model.AsphaltBases)
+                    {
+                        <option value="@item.Id">@item.Name</option>
+                    }
+                </select>
+            </div>
+            <div class="form-group">
+                <label asp-for="AsphaltMixtureId" class="control-label"></label>
+                <select id="asphaltMixture" class="form-control" name="AsphaltMixtureId">
+                    @foreach (var item in Model.AsphaltMixtures)
+                    {
+                        <option value="@item.Id">@item.Type</option>
+                    }
+                </select>
+            </div>
+            <div class="form-group">
+                <label asp-for="RoadObjectId" class="control-label"></label>
+                <select id="roadObject" class="form-control" name="RoadObjectId">
+                    @foreach (var item in Model.RoadObjects)
+                    {
+                        <option value="@item.Id">@item.Name</option>
+                    }
+                </select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Weight" class="control-label"></label>
+                <input asp-for="Weight" type="number" step="0.001" min="0.001" max="30.000" class="form-control" id="weight" placeholder="12.345">
+                <span asp-validation-for="Weight" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TransportDistance" class="control-label"></label>
+                <input asp-for="TransportDistance" type="number" step="1" min="1" max="50" class="form-control" id="weight" placeholder="12">
+                <span asp-validation-for="TransportDistance" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-success" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a class="btn btn-info" asp-area="" asp-action="All">Back to List</a>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
+

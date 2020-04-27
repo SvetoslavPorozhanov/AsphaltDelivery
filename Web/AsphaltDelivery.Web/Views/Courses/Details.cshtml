@@ -1,0 +1,96 @@
+﻿@model AsphaltDelivery.Web.ViewModels.Courses.CourseDetailsViewModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Course</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.Id)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.Id)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.DateTime)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.DateTime)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.DriverFullName)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.DriverFullName)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.TruckRegistrationNumber)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.TruckRegistrationNumber)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.FirmName)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.FirmName)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.AsphaltBaseName)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.AsphaltBaseName)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.AsphaltMixtureType)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.AsphaltMixtureType)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.RoadObjectName)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.RoadObjectName)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.Weight)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.Weight)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.TransportDistance)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.TransportDistance)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.WeightByDistance)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.WeightByDistance)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.CreatedOn)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.CreatedOn)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.ModifiedOn)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.ModifiedOn)
+        </dd>
+    </dl>
+</div>
+<div>
+    @Html.ActionLink("Edit", "Edit", new { area = "Administration", controller = "Courses", id = Model.Id}, new { @class = "btn btn-success" })
+    <a class="btn btn-info" asp-action="All">Back to List</a>
+</div>

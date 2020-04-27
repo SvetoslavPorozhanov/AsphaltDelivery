@@ -1,0 +1,66 @@
+﻿@{
+    this.ViewBag.Title = "Chat";
+}
+
+<h1>@this.ViewBag.Title</h1>
+
+@*<script src="/lib/tinymce/tinymce.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+    tinymce.init({
+        selector: "textarea",
+        plugins: [
+            "image paste table link code media"
+        ]
+    });
+</script>*@
+
+<div class="container">
+    <h4>Message</h4>
+    <div id="message-holder">
+        <div>
+            <textarea class="form-control" type="text" id="messageInput"></textarea>
+        </div>
+    </div>
+    <br>
+    <p align="right">
+        <button id="sendButton" class="ml-4 btn btn-dark btn-lg ">Send</button>
+    </p>
+    
+    <hr style="height: 5px;" class="bg-dark" />
+    <div id="messagesList" style="font-size: 28px;">
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        var connection =
+            new signalR.HubConnectionBuilder()
+                .withUrl("/chat")
+                .build();
+
+        connection.on("NewMessage",
+            function (message) {
+                var chatInfo = `<div>[${message.user}] [at ${message.createdOn}] ${message.sanitizedText}</div>`;
+                $("#messagesList").append(chatInfo);
+            });
+
+        $("#sendButton").click(function () {
+            var message = $("#messageInput").val();
+            connection.invoke("Send", message);
+        });
+
+        connection.start().catch(function (err) {
+            return console.error(err.toString());
+        });
+
+        function escapeHtml(unsafe) {
+            return unsafe
+                //.replace(/&/g, "&amp;")
+                //.replace(/</g, "&lt;")
+                //.replace(/>/g, "&gt;")
+                //.replace(/"/g, "&quot;")
+                //.replace(/'/g, "&#039;")
+                // deleting escapeHtml stops sending messages?
+                ;
+        }</script>
+}

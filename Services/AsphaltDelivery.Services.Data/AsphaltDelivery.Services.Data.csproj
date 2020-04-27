@@ -1,0 +1,31 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <CodeAnalysisRuleSet>..\..\Rules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <AdditionalFiles Include="..\..\stylecop.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Cloudinary.Core" Version="1.31.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Http" Version="2.2.2" />
+    <PackageReference Include="StyleCop.Analyzers" Version="1.2.0-beta.113" PrivateAssets="all">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\AsphaltDelivery.Common\AsphaltDelivery.Common.csproj" />
+    <ProjectReference Include="..\..\Data\AsphaltDelivery.Data.Common\AsphaltDelivery.Data.Common.csproj" />
+    <ProjectReference Include="..\..\Data\AsphaltDelivery.Data.Models\AsphaltDelivery.Data.Models.csproj" />
+    <ProjectReference Include="..\..\Data\AsphaltDelivery.Data\AsphaltDelivery.Data.csproj" />
+    <ProjectReference Include="..\AsphaltDelivery.Services.Mapping\AsphaltDelivery.Services.Mapping.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,102 @@
+﻿@model AsphaltDelivery.Web.ViewModels.Courses.CourseFilterInputModel
+
+@{
+    ViewData["Title"] = "Filter";
+}
+
+<h1>Filter your courses</h1>
+
+<hr />
+
+<form asp-action="Filter" asp-controller="Courses">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="form-group">
+        <label asp-for="FilterFromDateTime" class="control-label"></label>
+        <input asp-for="FilterFromDateTime" class="form-control" placeholder="dd.MM.yyyy HH:mm" />
+        <span asp-validation-for="FilterFromDateTime" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="FilterToDateTime" class="control-label"></label>
+        <input asp-for="FilterToDateTime" class="form-control" placeholder="dd.MM.yyyy HH:mm" />
+        <span asp-validation-for="FilterToDateTime" class="text-danger"></span>
+    </div>
+    @*<div class="form-group">
+            <label asp-for="DriverId" class="control-label"></label>
+            <select>
+                <option val="">--None--</option>
+                @foreach(var item in Model.Drivers)
+                {
+                <option val="@item.Id">@item.FullName</option>}
+            </select>
+        </div>*@
+    @*<div class="form-group">
+            <label asp-for="DriverId" class="control-label"></label>
+            <select asp-for="DriverId" asp-items="@(new SelectList(Model.Drivers, "Id", "FullName"))" class="form-control">
+                <option val="">--None--</option>
+            </select>
+        </div>*@
+    <div class="form-group">
+        <label asp-for="DriverIds" class="control-label"></label>
+        <select id="drivers" multiple="multiple" class="form-control" name="DriverIds">
+            <option val="">--None--</option>
+            @foreach (var item in Model.Drivers)
+            {
+                <option value="@item.Id">@item.FullName</option>
+            }
+        </select>
+    </div>
+    <div class="form-group">
+        <label asp-for="TruckIds" class="control-label"></label>
+        <select id="trucks" multiple="multiple" class="form-control" name="TruckIds">
+            <option val="">--None--</option>
+            @foreach (var item in Model.Trucks)
+            {
+                <option value="@item.Id">@item.RegistrationNumber</option>
+            }
+        </select>
+    </div>
+    <div class="form-group">
+        <label asp-for="FirmIds" class="control-label"></label>
+        <select id="firms" multiple="multiple" class="form-control" name="FirmIds">
+            <option val="">--None--</option>
+            @foreach (var item in Model.Firms)
+            {
+                <option value="@item.Id">@item.Name</option>
+            }
+        </select>
+    </div>
+    <div class="form-group">
+        <label asp-for="AsphaltBaseIds" class="control-label"></label>
+        <select id="asphaltBases" multiple="multiple" class="form-control" name="AsphaltBaseIds">
+            <option val="">--None--</option>
+            @foreach (var item in Model.AsphaltBases)
+            {
+                <option value="@item.Id">@item.Name</option>
+            }
+        </select>
+    </div>
+    <div class="form-group">
+        <label asp-for="AsphaltMixtureIds" class="control-label"></label>
+        <select id="asphaltMixtures" multiple="multiple" class="form-control" name="AsphaltMixtureIds">
+            <option val="">--None--</option>
+            @foreach (var item in Model.AsphaltMixtures)
+            {
+                <option value="@item.Id">@item.Type</option>
+            }
+        </select>
+    </div>
+    <div class="form-group">
+        <label asp-for="RoadObjectIds" class="control-label"></label>
+        <select id="roadObjects" multiple="multiple" class="form-control" name="RoadObjectIds">
+            <option val="">--None--</option>
+            @foreach (var item in Model.RoadObjects)
+            {
+                <option value="@item.Id">@item.Name</option>
+            }
+        </select>
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Filter" class="btn btn-info" />
+    </div>
+</form>
+

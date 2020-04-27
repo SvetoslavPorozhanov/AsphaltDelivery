@@ -1,0 +1,170 @@
+﻿@model AsphaltDelivery.Web.ViewModels.Courses.CourseFilterInputModel
+
+@{
+    ViewData["Title"] = "Results";
+}
+
+<h1>Results</h1>
+
+<div>
+    <h4>Your applied filters:</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.FilterFromDateTime)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.FilterFromDateTime)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.FilterToDateTime)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.FilterToDateTime)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.DriverFullNames)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.DriverFullNames)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.TruckRegistrationNumbers)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.TruckRegistrationNumbers)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.FirmNames)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.FirmNames)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.AsphaltBaseNames)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.AsphaltBaseNames)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.AsphaltMixtureTypes)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.AsphaltMixtureTypes)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.RoadObjectNames)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.RoadObjectNames)
+        </dd>
+    </dl>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.TotalWeightByDistance)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.TotalWeightByDistance)
+        </dd>
+    </dl>
+    <hr />
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Courses</h6>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>
+                                #
+                            </th>
+                            <th>
+                                Id
+                            </th>
+                            <th>
+                                DateTime
+                            </th>
+                            <th>
+                                Driver Full Name
+                            </th>
+                            <th>
+                                Truck Registration Number
+                            </th>
+                            <th>
+                                Firm Name
+                            </th>
+                            <th>
+                                Asphalt Base Name
+                            </th>
+                            <th>
+                                Asphalt Mixture Type
+                            </th>
+                            <th>
+                                Road Object Name
+                            </th>
+                            <th>
+                                Weight in tons
+                            </th>
+                            <th>
+                                Transport Distance in km
+                            </th>
+                            <th>
+                                Weight By Distance in tkm
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{
+                            int counter = 0;
+                        }
+                        @foreach (var item in Model.FilteredCourses)
+                        {
+                            counter = counter + 1;
+                            <tr>
+                                <td>
+                                    @counter
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Id)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.DateTime)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.DriverFullName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.TruckRegistrationNumber)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.FirmName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.AsphaltBaseName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.AsphaltMixtureType)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.RoadObjectName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Weight)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.TransportDistance)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.WeightByDistance)
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,52 @@
+﻿@model AsphaltDelivery.Web.ViewModels.Pictures.PictureViewModel
+@using AsphaltDelivery.Common
+@{
+    this.ViewData["Title"] = "Home Page";
+}
+
+    <div class="text-center">
+
+        <h1 class="display-4">Welcome to @GlobalConstants.SystemName!</h1>
+        <h3>
+            To start using our application please <a class="btn btn-info" asp-area="Identity" asp-controller="Account" asp-action="Login">Login</a>
+            or <a class="btn btn-success" asp-area="Identity" asp-controller="Account" asp-action="Register">Register</a> a new account.
+        </h3>
+        <h4>
+            Use this account to register as administrator:
+            email: root_user@root.com
+            password: 123456
+        </h4>
+        <img scr="https://res.cloudinary.com/asphaltdelivery/image/upload/v1585172767/sample.jpg" />
+        @*<form method="post" enctype="multipart/form-data" asp-controller="Home" asp-action="Upload">
+            <input type="file" name="file">
+            <button type="submit" value="Change Picture" />
+        </form>*@
+        @*<div class="form-group">
+            <label asp-for="ProfilePicture" class="upload-btn">
+                <i class="fa fa-upload"></i> Upload
+                <input asp-for="ProfilePicture" type="file" class="form-control" />
+                <span asp-validation-for="ProfilePicture" class="text-danger"></span>
+            </label>
+            <div class="margin-top-0"></div>
+            <span id="file-selected"></span>
+        </div>*@
+        
+        <form method="post" enctype="multipart/form-data" asp-controller="Home" asp-action="Upload">
+            <div class="form-group">
+                <div class="col-md-10">
+                    <p>Upload one or more files using this form:</p>
+                    <input class="btn btn-primary" type="file" name="file" />
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-10">
+                    <input class="btn btn-success" type="submit" value="Upload" />
+                </div>
+            </div>
+        </form>
+    </div>
+
+
+
+
+
